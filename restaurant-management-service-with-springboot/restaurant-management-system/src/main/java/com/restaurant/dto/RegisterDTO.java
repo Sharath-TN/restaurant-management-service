@@ -1,4 +1,4 @@
-package com.restaurant.dto.dto;
+package com.restaurant.dto;
 
 import com.zeta_training.restaurant_management_system.enumeration.Role;
 import lombok.Getter;

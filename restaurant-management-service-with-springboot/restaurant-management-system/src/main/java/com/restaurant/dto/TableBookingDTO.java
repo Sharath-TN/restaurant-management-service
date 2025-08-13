@@ -1,4 +1,4 @@
-package com.restaurant.dto.dto;
+package com.restaurant.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
