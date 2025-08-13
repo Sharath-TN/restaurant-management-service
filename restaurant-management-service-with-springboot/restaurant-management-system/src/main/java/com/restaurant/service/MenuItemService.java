@@ -11,4 +11,6 @@ public interface MenuItemService {
     void deleteMenuItem(Long id);
 
     List<MenuItem> getAllMenuItems();
+
+    void updateMenuItem(MenuItemDTO request);
 }
