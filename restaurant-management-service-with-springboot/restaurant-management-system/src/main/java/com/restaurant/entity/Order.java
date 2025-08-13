@@ -1,7 +1,7 @@
 package com.restaurant.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.zeta_training.restaurant_management_system.enumeration.OrderStatus;
+import com.restaurant.enumeration.OrderStatus;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
