@@ -12,8 +12,11 @@ import java.util.List;
 
 @Service
 public class TableBookingService {
-    @Autowired
-    private TableBookingRepository tableBookingRepository;
+    private final TableBookingRepository tableBookingRepository;
+
+    public TableBookingService(TableBookingRepository tableBookingRepository) {
+        this.tableBookingRepository = tableBookingRepository;
+    }
 
     public Long bookTable(TableBookingDTO request) {
         TableBooking tableBooking = TableBooking.builder()

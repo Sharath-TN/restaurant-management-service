@@ -11,8 +11,11 @@ import java.util.List;
 @Service
 public class MenuItemService {
 
-    @Autowired
-    private MenuItemRepository menuItemRepository;
+    private final MenuItemRepository menuItemRepository;
+
+    public MenuItemService(MenuItemRepository menuItemRepository) {
+        this.menuItemRepository = menuItemRepository;
+    }
 
     public void addMenuItem(MenuItemDTO request) {
         MenuItem menuItem = MenuItem.builder()

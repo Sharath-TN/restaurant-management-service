@@ -27,20 +27,23 @@ import java.util.stream.Collectors;
 
 @Service
 public class OrderService {
-    @Autowired
-    private OrderRepository orderRepository;
+    private final OrderRepository orderRepository;
 
-    @Autowired
-    private MenuItemRepository menuItemRepository;
+    private final MenuItemRepository menuItemRepository;
 
-    @Autowired
-    private OrderItemRepository orderItemRepository;
+    private final OrderItemRepository orderItemRepository;
 
-    @Autowired
-    private TableBookingRepository tableBookingRepository;
+    private final TableBookingRepository tableBookingRepository;
 
-    @Autowired
-    private BillRepository billRepository;
+    private final BillRepository billRepository;
+
+    public OrderService(OrderRepository orderRepository, MenuItemRepository menuItemRepository, OrderItemRepository orderItemRepository, TableBookingRepository tableBookingRepository, BillRepository billRepository) {
+        this.orderRepository = orderRepository;
+        this.menuItemRepository = menuItemRepository;
+        this.orderItemRepository = orderItemRepository;
+        this.tableBookingRepository = tableBookingRepository;
+        this.billRepository = billRepository;
+    }
 
     @Transactional
     public Order placeOrUpdateOrder(OrderRequest request) {
