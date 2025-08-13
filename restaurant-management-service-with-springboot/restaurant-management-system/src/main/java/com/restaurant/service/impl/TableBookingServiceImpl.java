@@ -18,6 +18,7 @@ public class TableBookingServiceImpl implements TableBookingService {
         this.tableBookingRepository = tableBookingRepository;
     }
 
+    @Override
     public Long bookTable(TableBookingDTO request) {
         TableBooking tableBooking = TableBooking.builder()
                 .customerName(request.getCustomerName())

@@ -33,6 +33,7 @@ public class MenuItemServiceImpl implements MenuItemService {
         menuItemRepository.delete(menuItem);
     }
 
+    @Override
     public List<MenuItem> getAllMenuItems() {
         return menuItemRepository.findAll();
     }

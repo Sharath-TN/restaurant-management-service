@@ -7,6 +7,8 @@ import com.restaurant.entity.TableBooking;
 import java.util.List;
 
 public interface TableBookingService {
+    Long bookTable(TableBookingDTO request);
+
     List<TableBooking> getAllBookings();
 
     TableBooking getBookingById(Long id);
