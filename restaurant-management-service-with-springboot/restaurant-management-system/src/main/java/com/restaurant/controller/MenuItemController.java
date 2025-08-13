@@ -18,8 +18,11 @@ import java.util.List;
 @RestController
 @RequestMapping("/menuItem")
 public class MenuItemController {
-    @Autowired
-    private MenuItemService menuItemService;
+    private final MenuItemService menuItemService;
+
+    public MenuItemController(MenuItemService menuItemService) {
+        this.menuItemService = menuItemService;
+    }
 
     @PostMapping("/addMenuItem")
     public ResponseEntity<String> addMenuItem(@RequestBody MenuItemDTO request) {

@@ -16,11 +16,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/admin")
 public class AdminController {
 
-    @Autowired
-    private AuthService authService;
+    private final AuthService authService;
 
-    @Autowired
-    private OrderService orderService;
+    private final OrderService orderService;
+
+    public AdminController(AuthService authService, OrderService orderService) {
+        this.authService = authService;
+        this.orderService = orderService;
+    }
 
     @PostMapping("/registerRestaurantEmployee")
     public ResponseEntity<String> registerRestaurantEmployee(@RequestBody RegisterDTO request) {

@@ -21,8 +21,11 @@ import java.util.List;
 @RequestMapping("/table-booking")
 public class TableBookingController {
 
-    @Autowired
-    private TableBookingService tableBookingService;
+    private final TableBookingService tableBookingService;
+
+    public TableBookingController(TableBookingService tableBookingService) {
+        this.tableBookingService = tableBookingService;
+    }
 
     @PostMapping("/book")
     public ResponseEntity<String> bookTable(@RequestBody TableBookingDTO tableBookingDTO) {

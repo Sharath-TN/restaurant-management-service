@@ -15,10 +15,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/auth")
 public class AuthController {
-    @Autowired
-    private AuthService authService;
-    @Autowired
-    private JwtUtil jwtUtil;
+    private final AuthService authService;
+
+    private final JwtUtil jwtUtil;
+
+    public AuthController(AuthService authService, JwtUtil jwtUtil) {
+        this.authService = authService;
+        this.jwtUtil = jwtUtil;
+    }
 
     @PostMapping("/registerAdmin")
     public ResponseEntity<String> registerAdmin(@RequestBody RegisterDTO request) {
