@@ -42,7 +42,7 @@ public class MenuItemController {
         return ResponseEntity.ok("Menu item deleted successfully");
     }
 
-    @PatchMapping
+    @PatchMapping("/updateMenuItem")
     public ResponseEntity<String> updateMenuItem(@RequestBody MenuItemDTO request) {
         menuItemService.updateMenuItem(request);
         return ResponseEntity.ok("Menu item updated successfully");

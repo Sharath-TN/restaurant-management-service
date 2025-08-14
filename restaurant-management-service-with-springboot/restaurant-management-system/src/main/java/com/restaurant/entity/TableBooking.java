@@ -45,7 +45,7 @@ public class TableBooking {
     private LocalDateTime bookingDate;
 
     @NotNull
-    private Long NumberOfGuests;
+    private Long numberOfGuests;
 
     @NotNull
     @Enumerated(EnumType.STRING)

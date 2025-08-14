@@ -24,10 +24,11 @@ public class TableBookingServiceImpl implements TableBookingService {
                 .customerName(request.getCustomerName())
                 .phoneNumber(request.getPhoneNumber())
                 .bookingDate(request.getBookingDate())
-                .NumberOfGuests(request.getNumberOfGuests())
+                .numberOfGuests(request.getNumberOfGuests())
                 .bookingStatus(BookingStatus.PENDING)
                 .build();
-        return tableBookingRepository.save(tableBooking).getId();
+        tableBooking = tableBookingRepository.save(tableBooking);
+        return tableBooking.getId();
     }
 
     @Override
