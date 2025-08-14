@@ -37,4 +37,17 @@ public class MenuItemServiceImpl implements MenuItemService {
     public List<MenuItem> getAllMenuItems() {
         return menuItemRepository.findAll();
     }
+
+    @Override
+    public void updateMenuItem(MenuItemDTO request) {
+        menuItemRepository.findByName(request.getName())
+                .ifPresentOrElse(menuItem -> {
+                    if(request.getPrice() != null) {
+                        menuItem.setPrice(request.getPrice());
+                    }
+                    menuItemRepository.save(menuItem);
+                }, () -> {
+                    throw new RuntimeException("Menu item not found");
+                });
+    }
 }
