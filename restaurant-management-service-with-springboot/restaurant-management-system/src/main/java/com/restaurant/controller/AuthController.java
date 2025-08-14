@@ -4,6 +4,7 @@ import com.restaurant.dto.LoginDTO;
 import com.restaurant.dto.RegisterDTO;
 import com.restaurant.service.AuthService;
 import com.restaurant.util.JwtUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/auth")
+@Slf4j
 public class AuthController {
     private final AuthService authService;
 
@@ -26,6 +28,7 @@ public class AuthController {
 
     @PostMapping("/registerAdmin")
     public ResponseEntity<String> registerAdmin(@RequestBody RegisterDTO request) {
+        log.debug("Received request to register admin: {}", request);
         authService.registerAdmin(request);
         return ResponseEntity.ok("Admin registered successfully");
     }

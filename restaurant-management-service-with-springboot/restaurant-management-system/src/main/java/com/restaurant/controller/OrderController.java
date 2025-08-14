@@ -5,6 +5,7 @@ import com.restaurant.dto.StatusDTO;
 import com.restaurant.entity.Order;
 import com.restaurant.enumeration.OrderItemStatus;
 import com.restaurant.service.OrderService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/orders")
+@Slf4j
 public class OrderController {
     private final OrderService orderService;
 
@@ -25,12 +27,14 @@ public class OrderController {
 
     @PostMapping("/place")
     public ResponseEntity<Order> placeOrder(@RequestBody OrderRequest request) {
+        log.debug("Received request to place or update order: {}", request);
         Order savedOrder = orderService.placeOrUpdateOrder(request);
         return ResponseEntity.ok(savedOrder);
     }
 
     @PutMapping("/updateOrderItem/{orderItemId}")
     public ResponseEntity<String> updateOrderItem(@PathVariable Long orderItemId, @RequestBody StatusDTO status) {
+        log.debug("Received request to update order item status: orderItemId={}, status={}", orderItemId, status);
         orderService.updateOrderItemStatus(orderItemId, OrderItemStatus.valueOf(status.getStatus().toUpperCase()));
         return ResponseEntity.ok("Order item status updated successfully");
     }
