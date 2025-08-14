@@ -21,7 +21,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -41,7 +40,7 @@ public class Order {
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonManagedReference
-    private List<OrderItem> orderItems = new ArrayList<>();
+    private ArrayList<OrderItem> orderItems = new ArrayList<>();
 
     @NotNull
     @Enumerated(EnumType.STRING)
