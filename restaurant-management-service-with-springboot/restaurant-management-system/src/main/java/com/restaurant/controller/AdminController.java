@@ -4,7 +4,7 @@ import com.restaurant.dto.BillResponseDTO;
 import com.restaurant.dto.RegisterDTO;
 import com.restaurant.service.AuthService;
 import com.restaurant.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/admin")
+@Slf4j
 public class AdminController {
 
     private final AuthService authService;
@@ -27,13 +28,14 @@ public class AdminController {
 
     @PostMapping("/registerRestaurantEmployee")
     public ResponseEntity<String> registerRestaurantEmployee(@RequestBody RegisterDTO request) {
-
+        log.debug("Received request to register restaurant employee: {}", request);
         authService.registerRestaurantEmployee(request);
         return ResponseEntity.ok("Restaurant employee registered successfully");
     }
 
     @PostMapping("/generateBill/{orderId}")
     public ResponseEntity<BillResponseDTO> generateBill(@PathVariable Long orderId) {
-         return ResponseEntity.ok(orderService.generateBill(orderId));
+        log.debug("Received request to generate bill for order ID: {}", orderId);
+        return ResponseEntity.ok(orderService.generateBill(orderId));
     }
 }
