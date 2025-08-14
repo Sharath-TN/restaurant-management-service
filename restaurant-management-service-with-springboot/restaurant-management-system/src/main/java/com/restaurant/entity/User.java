@@ -1,6 +1,6 @@
 package com.restaurant.entity;
 
-import com.zeta_training.restaurant_management_system.enumeration.Role;
+import com.restaurant.enumeration.Role;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

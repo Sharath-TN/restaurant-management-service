@@ -1,4 +1,4 @@
-package com.restaurant.dto.dto;
+package com.restaurant.dto;
 
 import lombok.Getter;
 import lombok.Setter;
