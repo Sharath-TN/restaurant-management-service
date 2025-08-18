@@ -85,6 +85,7 @@ public class OrderServiceImpl implements OrderService {
             orderItem.setQuantity(itemReq.getQuantity());
 
             order.getOrderItems().add(orderItem);
+            orderItemRepository.save(orderItem);
         }
         log.info("Saving order with ID: {}", order.getId());
         return orderRepository.save(order);

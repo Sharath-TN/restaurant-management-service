@@ -4,6 +4,7 @@ import com.restaurant.dto.BillResponseDTO;
 import com.restaurant.dto.RegisterDTO;
 import com.restaurant.service.AuthService;
 import com.restaurant.service.OrderService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,7 +28,7 @@ public class AdminController {
     }
 
     @PostMapping("/registerRestaurantEmployee")
-    public ResponseEntity<String> registerRestaurantEmployee(@RequestBody RegisterDTO request) {
+    public ResponseEntity<String> registerRestaurantEmployee(@Valid @RequestBody RegisterDTO request) {
         log.debug("Received request to register restaurant employee: {}", request);
         authService.registerRestaurantEmployee(request);
         return ResponseEntity.ok("Restaurant employee registered successfully");

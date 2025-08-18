@@ -3,6 +3,7 @@ package com.restaurant.controller;
 import com.restaurant.dto.MenuItemDTO;
 import com.restaurant.entity.MenuItem;
 import com.restaurant.service.MenuItemService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,7 +29,7 @@ public class MenuItemController {
     }
 
     @PostMapping("/addMenuItem")
-    public ResponseEntity<String> addMenuItem(@RequestBody MenuItemDTO request) {
+    public ResponseEntity<String> addMenuItem(@Valid @RequestBody MenuItemDTO request) {
         log.debug("Received request to add menu item: {}", request);
         menuItemService.addMenuItem(request);
         return ResponseEntity.ok("Menu item added successfully");

@@ -14,6 +14,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.transaction.TransactionSystemException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.HttpClientErrorException;
 
 import java.util.stream.Collectors;
 
@@ -92,6 +93,11 @@ public class GlobalExceptionHandler {
         if (exception instanceof DataIntegrityViolationException || exception instanceof DuplicateKeyException) {
             errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(400), exception.getMessage());
             errorDetail.setProperty("description", "Data integrity violation occurred, possibly due to duplicate entries or constraints.");
+        }
+
+        if(exception instanceof HttpClientErrorException.BadRequest) {
+            errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(400), exception.getMessage());
+            errorDetail.setProperty("description", "Bad request, possibly due to invalid parameters or request body.");
         }
 
         if (errorDetail == null) {
