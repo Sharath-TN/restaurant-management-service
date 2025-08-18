@@ -4,6 +4,7 @@ import com.restaurant.dto.StatusDTO;
 import com.restaurant.dto.TableBookingDTO;
 import com.restaurant.entity.TableBooking;
 import com.restaurant.service.TableBookingService;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -49,7 +50,7 @@ public class TableBookingController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<String> updateBooking(@PathVariable Long id, @RequestBody TableBookingDTO tableBookingDTO) {
+    public ResponseEntity<String> updateBooking(@PathVariable Long id, @Valid @RequestBody TableBookingDTO tableBookingDTO) {
         log.debug("Received request to update table booking with ID: {}, data: {}", id, tableBookingDTO);
         tableBookingService.updateBooking(id, tableBookingDTO);
         return ResponseEntity.ok("Booking updated successfully with ID: " + id);
@@ -63,7 +64,7 @@ public class TableBookingController {
     }
 
     @PutMapping("/updateStatus/{id}")
-        public ResponseEntity<String> updateBookingStatus(@PathVariable Long id, @RequestBody StatusDTO status) {
+        public ResponseEntity<String> updateBookingStatus(@PathVariable Long id, @Valid @RequestBody StatusDTO status) {
         log.debug("Received request to update booking status for ID: {}, status: {}", id, status);
         tableBookingService.updateBookingStatus(id, status);
         return ResponseEntity.ok("Booking status updated successfully with ID: " + id);

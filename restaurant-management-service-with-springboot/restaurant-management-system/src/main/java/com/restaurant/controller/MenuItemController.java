@@ -49,7 +49,7 @@ public class MenuItemController {
     }
 
     @PatchMapping("/updateMenuItem")
-    public ResponseEntity<String> updateMenuItem(@RequestBody MenuItemDTO request) {
+    public ResponseEntity<String> updateMenuItem(@Valid@RequestBody MenuItemDTO request) {
         log.debug("Received request to update menu item: {}", request);
         menuItemService.updateMenuItem(request);
         return ResponseEntity.ok("Menu item updated successfully");
